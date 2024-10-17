@@ -4,12 +4,15 @@ on:
   push:
     branches:
       - 'master'
+      - 'dev'
   pull_request:
     branches:
       - 'master'
+      - 'dev'
 
 jobs:
   eslint:
+    name: ESLint Check
     runs-on: ${{ matrix.os }}
 
     strategy:
@@ -43,6 +46,7 @@ jobs:
         run: npm run lint
 
   unit-tests:
+    name: Unit Tests Check
     runs-on: ${{ matrix.os }}
 
     strategy:
@@ -73,8 +77,45 @@ jobs:
 
       # - name: Test Backend
       #   working-directory: ./textify-backend
-      #   run: npm run test
+  
+  coverage:
+    name: Coverage Check
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+
+      - name: Install dependencies
+        working-directory: ./textify-frontend
+        run: npm ci
+
+      - name: Run tests with coverage
+        working-directory: ./textify-frontend
+        run: npx vitest run --coverage
+
+      - name: Check coverage threshold
+        working-directory: ./textify-frontend
+        run: |
+          COVERAGE=$(grep -Po 'All files\s*\|\s*\K[0-9.]+' ./coverage/lcov-report/index.html)
+          echo "Coverage is $COVERAGE%"
+          if (( $(echo "$COVERAGE < 80" | bc -l) )); then
+            echo "Coverage is below 80%, failing the job."
+            exit 1
+          fi
+
+      - name: Upload coverage report
+        uses: actions/upload-artifact@v3
+        with:
+          name: coverage-report
+          path: ./textify-frontend/coverage
+
   e2e:
+    name: End-to-End Tests Check
     runs-on: ubuntu-22.04
     steps:
       - name: Checkout
@@ -91,4 +132,5 @@ jobs:
         uses: cypress-io/github-action@v6
         with:
           working-directory: ./textify-frontend
-        
+          start: npm run dev
+          
