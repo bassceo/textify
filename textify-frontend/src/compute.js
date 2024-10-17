@@ -6,7 +6,7 @@ function computeResult(a, b, op) {
     }else if (op === '*'){
       return(a*b);
     }else{
-      return(a/b);
+      return(a*b);
     }
   };
   
