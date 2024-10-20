@@ -1,0 +1,61 @@
+.project-card {
+    width: 272px;
+    height: 173px;
+    border-radius: 8px;
+    -webkit-border-radius: 8px;
+    -moz-border-radius: 8px;
+    -ms-border-radius: 8px;
+    position: relative;
+    -o-border-radius: 8px;
+}
+
+.project-card__image {
+    height: 122.8px;
+}
+
+.project-card__image--removed {
+    filter: brightness(0.6);
+    -webkit-filter: brightness(0.6);
+}
+
+.project-card__content {
+    height: 150px;
+    font-family: "Varela Round", sans-serif;
+    padding: 0 !important;
+    margin-top: 8px;
+    margin-left: 9px;
+}
+
+.project-card__name {
+    font-size: 15px;
+}
+
+.project-card__last-entry {
+    font-size: 11px;
+    margin-top: 3px;
+}
+
+.project-card__restore-button {
+    position: absolute;
+    z-index: 100;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    // padding: 10px;
+    // gap: 10px;
+    position: absolute;
+    font-family: "Varela Round", sans-serif !important;
+    color: #FFF !important;
+    font-size: 12px;
+    width: 131px !important;
+    height: 36px !important;
+    left: 70.5px !important;
+    top: 50.5px !important;
+    background: #0751D8 !important;
+    border-radius: 46px !important;
+    -webkit-border-radius: 46px !important;
+    -moz-border-radius: 46px !important;
+    -ms-border-radius: 46px !important;
+    -o-border-radius: 46px !important;
+}
