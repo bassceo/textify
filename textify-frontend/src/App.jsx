@@ -1,9 +1,20 @@
-import ProjectCard from "./shared/ui/project-card/ProjectCard";
 
+import ActionBar from "./widgets/header/action-bar/ActionBar";
 
 const App = () =>  {
+    const users = [
+        { id: 0, name: '1hort description' },
+        { id: 2, name: '2hort description' },
+        { id: 3, name: '3hort description' },
+        { id: 4, name: '4hort description' },
+        { id: 5, name: '5hort description' },
+        { id: 6, name: '6hort description' },
+    ];
+    const handleClick = (index) => {
+        console.log('Clicked item index:', index);  
+    };
     return <>
-        <ProjectCard imageUrl={'https://ir-3.ozone.ru/s3/multimedia-m/c1000/6726566866.jpg'} lastEntryTime={new Date(2024, 9)} isRemoved={false}  />
+        <ActionBar users={users} onClick={handleClick} />
     </>;
 }
 

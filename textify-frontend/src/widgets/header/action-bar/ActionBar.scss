@@ -1,0 +1,28 @@
+@import url('https://fonts.googleapis.com/css2?family=SF+Compact+Rounded:wght@400&display=swap');
+
+.custom-button {
+  font-family: 'SF Compact Rounded', sans-serif;
+}
+
+.main-buttons-container {
+  display: flex;
+  flex-direction: row;
+  z-index: 0;
+}
+
+.three-dots-button {
+  .dots-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .dot {
+    width: 7px;
+    height: 7px;
+    background-color: black;
+    border-radius: 50%;
+    display: inline-block;
+    margin: 0 2px;
+  }
+}
