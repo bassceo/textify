@@ -1,10 +1,27 @@
-import ProjectCard from "./shared/ui/project-card/ProjectCard";
+import imageSrc from "./widgets/catalog/img.png"; 
+import ItemPanel from "./widgets/catalog/ItemPanel";
 
+const App = () => {
+    const items = [
+        { title: 'qw', description: 'Short description 1' },
+        { title: 'wqdwqd', description: 'Short description 2' },
+        { title: 'tyjhrgewq', description: 'Short description 3' },
+        { title: 'mnbvc', description: 'Short description 4' },
+        { title: 'mnbvc', description: 'Short description 4' },
+        { title: 'mnbvc', description: 'Short description 4' },
+        { title: 'mnbvc', description: 'Short description 4' },
+        { title: 'mnbvc', description: 'Short description 4' },
+    ];
 
-const App = () =>  {
-    return <>
-        <ProjectCard imageUrl={'https://ir-3.ozone.ru/s3/multimedia-m/c1000/6726566866.jpg'} lastEntryTime={new Date(2024, 9)} isRemoved={false}  />
-    </>;
-}
+    const handleItemClick = (index) => {
+        console.log('Item clicked:', index);
+    };
+
+    return (
+        <>
+            <ItemPanel items={items} imageSrc={imageSrc} onClick={handleItemClick} />
+        </>
+    );
+};
 
 export default App;
